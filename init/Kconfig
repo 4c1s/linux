@@ -1472,14 +1472,23 @@ config INITRAMFS_TEST
 
 choice
 	prompt "Compiler optimization level"
-	default CC_OPTIMIZE_FOR_PERFORMANCE
+	default CC_OPTIMIZE_FOR_STABLE_PERFORMANCE
 
-config CC_OPTIMIZE_FOR_PERFORMANCE
-	bool "Optimize for performance (-O2)"
+config CC_OPTIMIZE_FOR_STABLE_PERFORMANCE
+	bool "Optimize for stable performance (-O2)"
 	help
 	  This is the default optimization level for the kernel, building
 	  with the "-O2" compiler flag for best performance and most
 	  helpful compile-time warnings.
+
+config CC_OPTIMIZE_FOR_HIGH_PERFORMANCE
+	bool "Optimize for high performance (-O3)"
+	help
+          Enables high performance optimization using the "-O3" flag. This 
+	  option applies aggressive techniques to enhance execution speed, 
+	  such as inlining and loop unrolling. Use it for performance 
+	  critical applications, keeping in mind it may increase compilation 
+	  time and binary size.
 
 config CC_OPTIMIZE_FOR_SIZE
 	bool "Optimize for size (-Os)"
